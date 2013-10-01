@@ -1,0 +1,20 @@
+%h2 Describe your query.
+.well
+  = form_for(@ticket) do |f|
+    = f.label :name, "Name:"
+    = f.text_field :name, required: true
+    
+    = f.label :email, "Email adress:"
+    = f.text_field :email, required: true
+    
+    = f.label :subject, "Ticket's subject:"
+    = f.select :subject, options_for_select(subject_array)
+    
+    = f.label :question, "Question:"
+    = f.text_area :question, wrap: "soft", required: true, size: "30x5"
+    %br
+    = f.submit "Send", class: "btn btn-success"
+  
+= link_to "About Supportilla", about_path
+%br
+= link_to "Staff sign in", signin_path

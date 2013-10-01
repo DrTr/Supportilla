@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+boss:
+  username: Admin
+  password_digest: MyString
+  admin: true
+
+ivan:
+  username: Worker
+  password_digest: MyString
+  admin: false

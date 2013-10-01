@@ -1,0 +1,12 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+new_ticket:
+  name: MyString
+  email: some_email@adress.com
+  subject: Account
+  status: Waiting for staff response
+  question: MyText
+  answer:
+  refer: aaa010113
+  id_hashed: asdqwe234sdr234
+
