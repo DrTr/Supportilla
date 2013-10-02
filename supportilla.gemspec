@@ -5,7 +5,7 @@ require "supportilla/version"
 
 # Describe your gem and declare its dependencies:
 Gem::Specification.new do |s|
-  s.name        = "Supportilla"
+  s.name        = "supportilla"
   s.version     = Supportilla::VERSION
   s.authors     = ["Dmytro Muravskyi"]
   s.email       = ["dmytromuravskyi@gmail.com"]
