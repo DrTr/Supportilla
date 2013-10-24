@@ -1,0 +1,12 @@
+%h1 Subjects
+= render partial: "supportilla/shared/flash", locals: { flash: flash }
+%table
+  %thead
+    %tr
+      %td Id
+      %td Descrition
+      %td Active
+      %td Link
+  %tbody=render @subjects      
+%h3 Create new subject:
+.subject_form= render "subject_form"

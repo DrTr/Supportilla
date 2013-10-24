@@ -1,0 +1,34 @@
+= render partial: "supportilla/shared/flash", locals: {flash: flash}
+.tickets_links.well
+  %p= @description
+  - if @prev_ticket 
+    = link_to "<<Prev", edit_ticket_path(@prev_ticket, status: params[:status])
+  - else
+    = "<<Prev"
+  - if @next_ticket 
+    = link_to "Next>>", edit_ticket_path(@next_ticket, status: params[:status])
+  - else
+    = "Next>>"
+= render "ticket_info", object: @ticket
+- case @ticket.status.role 
+  - when "New unassigned", "Open"
+    = button_to "Take ownership", hold_ticket_path(@ticket), class: "btn",
+      data: { confirm: "Take ownership?"}
+    - if @ticket.answer
+      %h3 Answer:
+      %p= @ticket.answer
+  - when "On hold"
+    = button_to "Leave ownership", unhold_ticket_path(@ticket), class: "btn",
+      data: { confirm: "Leave ownership?"}
+    = form_for @ticket do |f|
+      = f.label :answer
+      = f.text_area :answer, wrap: "soft", size: "30x5", required: true
+      = f.label :status_id, "Status"
+      = f.collection_select(:status_id, 
+        Supportilla::Status.where("identify != 'unassigned'"), :id, :description)
+      = submit_tag "Update", class: "btn", data: { confirm: "Update ticket?"}
+  - when "Closed"
+    %h3 Answer:
+    %p= @ticket.answer
+= render "history"
+= link_to "<< Back", :back

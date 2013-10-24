@@ -1,0 +1,19 @@
+!!!
+%html
+  %head
+    %title>Dummy
+    = stylesheet_link_tag "application", "supportilla/application", 
+     :media => "all", "data-turbolinks-track" => true
+    = javascript_include_tag "application", "supportilla/application",
+      "data-turbolinks-track" => true
+    = csrf_meta_tags 
+%body
+  %h1 Application layout
+  #header
+  #content
+    #bar
+    #article
+      = yield
+      = debug(params) if Rails.env.development?  
+    
+

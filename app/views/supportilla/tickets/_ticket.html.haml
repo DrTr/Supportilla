@@ -1,0 +1,22 @@
+.ticket
+  .ticket-heading
+    %span.data= link_to "Ticket \##{ticket.refer}", 
+      edit_ticket_path(ticket, status: params[:status] )
+    %span.data Created at: #{ticket.created_at}
+  .ticket-body
+    %nobr
+      %span.info Author: 
+      %span.data= ticket.name
+    %nobr
+      %span.info Email:            
+      %span.data= ticket.email  
+    %br
+    %nobr
+      %span.info Subject: 
+      %span.data= ticket.subject.description
+    %nobr
+      %span.info Status: 
+      %span.data= ticket.status.description
+    %br
+    %span.info Question: 
+    = ticket.question[0..100] 

@@ -1,0 +1,4 @@
+$("tbody").html("#{ escape_javascript(render @subjects)}")                  
+$(".flash").html("#{ escape_javascript(                                  |
+  render partial: "supportilla/shared/flash", locals: {flash: flash})}") |
+$(".subject_form").html("#{ escape_javascript( render 'subject_form')}")

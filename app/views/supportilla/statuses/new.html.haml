@@ -1,0 +1,13 @@
+%h1 Create new status:
+%p.text-info Description will be visible in tickets.
+%p.text-info Identify helps distinguish status and must be unique.
+%p.text-info Role indicate when status can be used.
+= render "supportilla/shared/errors", object: @status
+= form_for(@status, html: {class: "well"}) do |f|
+  = f.label :description
+  = f.text_field :description, maxlength: 30, required: true
+  = f.label :identify
+  = f.text_field :identify, maxlength: 30, required: true
+  = f.label :role, "Status role"
+  = f.select :role, options_for_select(Supportilla::Status.uniq.pluck(:role))
+  = f.submit "Create", class: "btn", data: { confirm: "Create new status?"}

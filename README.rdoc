@@ -1,3 +1,108 @@
 = Supportilla
 
+Supportilla is a gem to enable ruby applications to processing support tickets.
+
+= Gems dependencies
+
+Supportilla needs next gems to work
+  gem "rails", "~> 3.2.14"
+  gem "jquery-rails"
+  gem "haml", '~> 4.0.3'
+  gem 'will_paginate', '~> 3.0'
+  gem 'sass-rails'
+  gem 'bcrypt-ruby', '~> 3.0.0'
+
+Also you will need 'sqlite3' for development enviroment.
+
+For intall supportilla gem just list to your gemfile:
+  gem 'supportilla', git: "git://github.com/DrTr/Supportilla.git"
+
+= Using nested styles and scripts
+
+Supportilla have own stylesheets and ajax scripts based on Bootswatch Flatly[http://bootswatch.com/flatly/] style.
+This styles will only work in allotted division. To use it you must add next gems to your gemfile:
+  gem 'bootstrap-sass'
+  gem 'bootstrap-will_paginate'
+  gem 'bootswatch-rails'
+  gem 'turbolinks'
+  
+and update your stylesheets and javascripts tags in application's layout like this:
+  = stylesheet_link_tag "application", "supportilla/application", 
+     :media => "all", "data-turbolinks-track" => true
+  = javascript_include_tag "application", "supportilla/application",
+      "data-turbolinks-track" => true
+
+= Prepare to work
+
+=== 1. To mount namespace
+First you have to choose mount url where Supportilla will be located in your routes.rb.
+For example if you have  write 
+  mount Supportilla::Engine => "/support"
+than you will access to Supportilla pages from localhost:3000/support in development enviroment.
+  
+=== 2. Configure mailer
+If you want to inform your visitors about ticket's changes you have to configure your mailer.
+If you not you can just skip this step.
+Configure your host url option in config/enviroment/[enviroment].rb like this:
+
+config/enviroment/development.rb:
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  
+If you want to use google smtp create file setup_mail.rb in config/initializers/ with next:
+  ActionMailer::Base.smtp_settings = {
+    :address              => "smtp.gmail.com",
+    :port                 => 587,
+    :domain               => "domain",
+    :user_name            => "username",
+    :password             => "password",
+    :authentication       => "plain",
+    :enable_starttls_auto => true
+  }
+  ActionMailer::Base.default from: "username@domain"
+  
+Where username, password and domain is your gmail account username, password and domain accordingly.
+	
+=== 3. Migrate and seed database
+
+Supportilla have database tables for tickets, subjects and statuses
+that you need to migrate and fill in in your application.
+
+To copy migration to your application type in terminal in your application folder:
+  rake supportilla:install:migrations
+  
+And then do migration:
+  rake db:migrate
+
+To fill database tables with basic statuses and subject:
+  rake db:supportilla_seed
+  
+Finally you need to create you first administrator account:
+  rake db:supportilla_admin[password,password_confirmation]
+It's create accout with username 'administrator' and password, that you type as parameter.
+  
+If you want to create some fake tickets for testing:
+  rake db:fake_tickets[count]
+where count is count of tickets you want. 
+
+= List of css classes and id
+If you want to change existing or create your own styles here list of classess:
+* .supportilla - class, which in nested all of the supportilla pages
+* .navbar - header navbar for staff or administrators. For more details please visit source[].
+* .well - additional class for forms.
+* .cb -  checkboxes.
+* .cb_label - checkbox label.
+* .btn - forms buttons.
+* .btn-info - search button.
+* .staffs -  staff list.
+* .staff - single staff.
+* .ticket - ticket in tickets index page. For more details please visit source[].
+* .ticket-links - division with links for navigating to next or prev ticket.
+* #error_explanation - error messages.
+* .flash - flash messages.
+* .alert - single flash message.
+* .alert-error, .alert-notice ... - flash message with some key.
+* .text-warning - paragraphs with warning text.
+* .text-info - paragraphs with warning text.
+
+
 This project rocks and uses MIT-LICENSE.

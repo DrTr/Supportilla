@@ -14,8 +14,11 @@ gem "jquery-rails"
 gem "haml", '~> 4.0.3'
 gem 'will_paginate', '~> 3.0'
 gem 'sass-rails'
+gem 'bcrypt-ruby', '~> 3.0.0'
+
 gem 'bootstrap-sass'
 gem 'bootstrap-will_paginate'
 gem 'bootswatch-rails'
+gem 'turbolinks'
 # To use debugger
 # gem 'debugger'

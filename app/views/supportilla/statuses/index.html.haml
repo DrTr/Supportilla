@@ -1,0 +1,13 @@
+%h1 Statuses
+= render partial: "supportilla/shared/flash", locals: {flash: flash}
+%table
+  %thead
+    %tr
+      %td Id
+      %td Role
+      %td Descrition
+      %td Identify
+      %td Basic
+      %td Link
+  %tbody=render @statuses      
+%h3= link_to "Create new status", new_status_path

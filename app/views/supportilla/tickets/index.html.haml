@@ -1,0 +1,10 @@
+%h3 #{@description}:
+- if @tickets.empty?
+  %p There is no tickets in this request.
+= form_tag search_tickets_path do
+  = text_field_tag :search, nil, placeholder: "Type reference, name or subject"
+  = hidden_field_tag :status, params[:status]
+  = submit_tag "Search", class: "btn btn-info"
+= will_paginate
+= render @tickets
+= will_paginate

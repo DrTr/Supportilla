@@ -1,0 +1,16 @@
+Hello, #{@ticket.name}.
+
+Inform you, that your ticket ##{@ticket.refer}
+was upated.
+ 
+Your ticket:
+Subject: #{@ticket.subject.description}.
+Status: #{@ticket.status.description}
+Question: #{@ticket.question}.   
+- if @ticket.staff 
+  Staff: #{@ticket.staff.username}.
+Answer: #{@ticket.answer}.
+
+You can track your ticket by visiting this page:
+= ticket_url(@ticket)
+

@@ -1,0 +1,16 @@
+.navbar.navbar-inverse
+  .navbar-inner
+    .container
+      %ul.nav.pull-left
+        %li= image_tag "supportilla/philosoraptor.png", size: "50x50"
+        %li= link_to "Supportilla", root_path, id: "logo"
+      %nav
+        %ul.nav.pull-right
+          %li.dropdown
+            %a(href="#" class="dropdown-toggle" data-toggle="dropdown")
+              = title 
+              %b.caret
+            %ul.dropdown-menu
+              = yield
+          %li.username= current_staff.username
+          %li= link_to "Log out", signout_path 

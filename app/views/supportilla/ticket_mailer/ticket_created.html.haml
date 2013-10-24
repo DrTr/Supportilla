@@ -1,12 +1,7 @@
-%h2 Hello, #{@ticket.name}.
 %p
   Inform you, that your ticket #
   %b= @ticket.refer
   was successfully created and waiting now for staff response. 
-%p
-  You can track your ticket by visiting this page:
-  = ticket_url(@ticket)
 %h3 Your ticket:
-%p  Subject: #{@ticket.subject}.
+%p  Subject: #{@ticket.subject.description}.
 %p  Question: #{@ticket.question}.   
-

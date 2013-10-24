@@ -16,4 +16,5 @@ end
 
 class ActiveSupport::TestCase
   fixtures :all
+  include Supportilla::Engine.routes.url_helpers
 end

@@ -1,0 +1,16 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+account:
+  id: 1  
+  description: Account
+  activity: true
+
+content:
+  id: 2
+  description: Site content
+  activity: true
+    
+bugs:
+  id: 3
+  description: Site Bugs
+  activity: true

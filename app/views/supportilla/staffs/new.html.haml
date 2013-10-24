@@ -1,0 +1,12 @@
+%h1 Creating new staff:
+= render "supportilla/shared/errors", object: @staff
+= form_for @staff, html: {class: "well"} do |f|
+  = f.label :username
+  = f.text_field :username, required: true, maxlength: 15
+  = f.label :password
+  = f.password_field :password, required: true
+  = f.label :password_confirmation
+  = f.password_field :password_confirmation, required: true
+  .cb_label= f.label :admin
+  .checkbox= f.check_box :admin, checked: false
+  = f.submit "Create", class: "btn", data: { confirm: "Create staff?"}

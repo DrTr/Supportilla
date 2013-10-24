@@ -1,0 +1,4 @@
+$(".staffs").html("#{ escape_javascript(render @staffs)}")									
+$("#staff_count").html("Staff count: #{@count}")
+$(".flash").html("#{ escape_javascript(                                  |
+  render partial: "supportilla/shared/flash", locals: {flash: flash})}") |  

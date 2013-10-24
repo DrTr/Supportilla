@@ -1,0 +1,17 @@
+<!-- For some reason it doesn`t work in haml -->
+<div class="supportilla">
+	<% if current_staff %>
+    <% if current_staff.admin %>
+      <%= render layout: "supportilla/shared/staff_navbar", locals: {title: "Managament"} do %>
+        <%= render "supportilla/shared/admin_list"%>
+      <% end %>
+    <% else %>
+      <%= render layout: "supportilla/shared/staff_navbar", locals: {title: "Tickets"} do %>
+        <%= render "supportilla/shared/staff_list"%>
+      <% end %>
+    <% end %>
+  <% end %>
+	<%= yield %>
+</div> 
+
+<%= parent_layout('application') %>

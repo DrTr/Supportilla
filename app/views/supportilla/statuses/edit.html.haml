@@ -1,0 +1,23 @@
+%h1 Status settings
+= render partial: "supportilla/shared/flash", locals: {flash: flash}
+%p Description: #{@status.description}
+%p Role: #{@status.role}
+%p Identfy: #{@status.identify}
+%h3 Change description
+= form_for @status do |f|
+  = f.text_field :description
+  = f.submit "Change", class: "btn", data: { confirm: "Change description?"}
+- if @status.basic
+  %p.text-warning You can't delete basic status!
+- else  
+  %h3 Delete status
+  = form_for @status, html: {method: :delete} do |f|
+    - if @status.tickets.any?
+      %p.text-warning
+        Warning! You have #{@status.tickets.count} tickets in this status.
+        Please select other status identify for remaining tickets.
+      = collection_select(nil, :status_id, @statuses_for_select, :id, :identify)
+    - else
+      %p.text-warning You have no tickets in this status.
+    = f.submit "Delete", class: "btn",  
+      data: { confirm: "Delete \"#{@status.description}\" status?"}

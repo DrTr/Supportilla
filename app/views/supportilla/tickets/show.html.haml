@@ -1,9 +1,14 @@
-%h1 Ticket ##{@ticket.refer}
-%h3 Author: #{@ticket.name}
-%h3 Subject: #{@ticket.subject}
-%h3 Status: #{@ticket.status}
-%h3 Question:
-%p= @ticket.question
+= render partial: "supportilla/shared/flash", locals: {flash: flash}
+= render "ticket_info", object: @ticket
+- if @ticket.staff
+  %h3 Staff username:
+  %p= @ticket.staff.username
 - if @ticket.answer
   %h3 Answer:
   %p= @ticket.answer
+- if @ticket.status.identify == "customer"
+  = form_tag(action: "append") do
+    = label_tag :addition, "Addition:"
+    = text_area_tag :addition, nil, wrap: "soft", required: true, size: "30x5"
+    = submit_tag "Update", class: "btn", data: { confirm: "Update ticket?"}
+= render "history"

@@ -1,0 +1,7 @@
+= render "supportilla/shared/errors", object: @subject
+= form_for(@subject, html: {class: "well"}, remote: true) do |f|
+  = f.label :description
+  = f.text_field :description, maxlength: 30, required: true
+  .cb_label= f.label :activity
+  .checkbox= f.check_box :activity, checked: false 
+  %span= f.submit "Add", class: "btn", data: { confirm: "Create new subject?"}

@@ -3,4 +3,8 @@
   %head
     %meta{content: "text/html", charset: "UTF-8", "http-equiv" => "Content-Type"}
   %body
+    %h2 Hello, #{@ticket.name}.
     = yield
+    %p
+      You can track your ticket by visiting this page:
+      = ticket_url(@ticket)

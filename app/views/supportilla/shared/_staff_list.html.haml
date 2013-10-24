@@ -1,0 +1,5 @@
+%li= link_to "New unassigned",
+  tickets_path(status: "New unassigned")
+%li= link_to "Open", tickets_path(status: "Open")               
+%li= link_to "On hold", tickets_path(status: "On hold")
+%li= link_to "Closed", tickets_path(status: "Closed") 

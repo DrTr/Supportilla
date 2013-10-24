@@ -1,12 +1,11 @@
 ActionMailer::Base.smtp_settings = {
   :address              => "smtp.gmail.com",
   :port                 => 587,
-  :domain               => "domain",
+  :domain               => "gmail.com",
   :user_name            => "username",
-  :password             => "secret",
+  :password             => "password",
   :authentication       => "plain",
   :enable_starttls_auto => true
 }
 
-ActionMailer::Base.default_url_options host: "localhost:3000"
-ActionMailer::Base.default from: "noreply@supportilla.com"
+ActionMailer::Base.default from: "username@gmail.com"

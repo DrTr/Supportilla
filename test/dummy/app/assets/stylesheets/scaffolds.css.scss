@@ -1,0 +1,22 @@
+body{
+  min-width: 800px;
+  min-height: 550px;
+}
+
+#header {
+  height: 200px;
+  background-color: gray;
+}
+
+
+#bar {
+  width: 200px;
+  background-color: green;
+  float: left;
+  height: 350px;
+}
+
+#article {
+  padding-top: 1px;
+  margin-left: 200px;
+}

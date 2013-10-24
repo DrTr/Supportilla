@@ -3,10 +3,9 @@ Hello, #{@ticket.name}.
 Inform you, that your ticket ##{@ticket.refer}
 was successfully created and waiting now for staff response. 
 
-You can track your ticket by visiting this page:
-= ticket_url(@ticket)
-
 Your ticket:
-Subject: #{@ticket.subject}.
+Subject: #{@ticket.subject.description}.
 Question: #{@ticket.question}.   
 
+You can track your ticket by visiting this page:
+= ticket_url(@ticket)

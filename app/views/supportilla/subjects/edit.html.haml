@@ -1,0 +1,28 @@
+%h1 Subject settings
+= render partial: "supportilla/shared/flash", locals: {flash: flash}
+%p Description: #{@subject.description}
+%p Active: #{@subject.activity}
+%h3 Change description
+%p.text-warning It just change ticket's subject field.
+= form_for @subject do |f|
+  = f.text_field :description
+  = f.submit "Change", class: "btn", data: { confirm: "Change description?"}
+%h3 Set activity
+%p.text-warning Unable to create ticket for unactive subject.
+- if @subject.activity
+  = button_to "Deactivate", subject_path(@subject, subject: {activity: false}), 
+    method: :put, class: "btn", data: { confirm: "Deactivate subject?"}
+- else
+  = button_to "Activate", subject_path(@subject, subject: {activity: true}), 
+    method: :put, class: "btn", data: { confirm: "Activate subject?"}
+%h3 Delete subject
+%p.text-warning Warning! Deleting subject will delete all attached tickets!
+%p.text-warning 
+  You have 
+  - if @subject.tickets.any? 
+    = "#{@subject.tickets.count} ( #{@closed_count} closed ) "
+  - else
+    = "no"
+  tickets in this subject remainig.
+= button_to "Delete", subject_path(@subject), method: :delete, class: "btn",
+  data: { confirm: "Delete \"#{@subject.description}\" subject?"}

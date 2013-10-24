@@ -11,7 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130929131058) do
+ActiveRecord::Schema.define(:version => 20131016132909) do
+
+  create_table "posts", :force => true do |t|
+    t.string   "title"
+    t.text     "text"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "supportilla_staffs", :force => true do |t|
     t.string   "username"
@@ -21,17 +28,35 @@ ActiveRecord::Schema.define(:version => 20130929131058) do
     t.datetime "updated_at",      :null => false
   end
 
+  create_table "supportilla_statuses", :force => true do |t|
+    t.string   "role"
+    t.string   "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.string   "identify"
+    t.boolean  "basic"
+  end
+
+  create_table "supportilla_subjects", :force => true do |t|
+    t.string   "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.boolean  "activity"
+  end
+
   create_table "supportilla_tickets", :force => true do |t|
     t.string   "name"
     t.string   "email"
-    t.string   "subject"
-    t.string   "status"
     t.text     "question"
     t.text     "answer"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.string   "refer"
     t.string   "id_hashed"
+    t.integer  "status_id"
+    t.integer  "subject_id"
+    t.text     "history"
+    t.integer  "staff_id"
   end
 
 end

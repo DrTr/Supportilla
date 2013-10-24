@@ -1,0 +1,50 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+unassigned:
+  id: 1
+  role: New unassigned 
+  description: Waiting for staff responce
+  identify: unassigned
+  basic: true
+
+open:
+  id: 2
+  role: Open 
+  description: Waiting for staff responce
+  identify: open
+  basic: true
+  
+customer:
+  id: 3
+  role: On hold 
+  description: Waiting for customer
+  identify: customer
+  basic: true
+
+hold:
+  id: 4
+  role: On hold 
+  description: Waiting for staff responce
+  identify: hold
+  basic: true
+
+cancelled:
+  id: 5
+  role: Closed
+  description: Cancelled
+  identify: cancelled
+  basic: true
+
+completed:
+  id: 6  
+  role: Closed
+  description: Completed
+  identify: completed
+  basic: true
+  
+closed:
+  id: 7  
+  role: Closed
+  description: Closed
+  identify: closed
+  basic: false

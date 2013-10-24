@@ -1,0 +1,7 @@
+%h1 Staff list
+= render partial: "supportilla/shared/flash", locals: {flash: flash}
+%h3= link_to "Create new staff", new_staff_path
+%h3#staff_count Staff count: #{@count} 
+= will_paginate
+.staffs= render @staffs
+= will_paginate

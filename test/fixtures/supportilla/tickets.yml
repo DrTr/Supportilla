@@ -1,12 +1,92 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-new_ticket:
-  name: MyString
+ticket:
+  id: 1
+  name: Name1
   email: some_email@adress.com
-  subject: Account
-  status: Waiting for staff response
-  question: MyText
-  answer:
-  refer: aaa010113
-  id_hashed: asdqwe234sdr234
+  subject_id: 1
+  status_id: 4
+  staff_id: 1
+  question: I'm ticket
+  answer: On hold
+  refer: aaa-010313
+  id_hashed: 483c33acf729b17fb7ca39e93539d59f
+  created_at: <%= 6.month.ago %>
 
+older:
+  id: 2
+  name: Name2
+  email: another_email@adress.com
+  subject_id: 2
+  status_id: 7
+  staff_id: 1
+  question: I'm older ticket
+  answer: Cancelled
+  refer: aaa-010912
+  id_hashed: e1157ea361fa7bd3beca29fac60b6ea1
+  created_at: <%= 1.year.ago %>
+  
+newer:
+  id: 3
+  name: Name3
+  email: still_email@adress.com
+  subject_id: 3
+  status_id: 1
+  staff_id: 
+  question: I'm newer ticket
+  answer: 
+  refer: aaa-010813
+  id_hashed: 95ece3c9ac47b14c039049c348fa9ded
+  created_at: <%= 1.month.ago %>
+
+oldest:
+  id: 4
+  name: Name4
+  email: another_email@adress.com
+  subject_id: 1
+  status_id: 6
+  staff_id: 1
+  question: I'm oldest ticket
+  answer: Completed
+  refer: aaa-010311
+  id_hashed: 2519dd36a504050be134fc30cb8917e9
+  created_at: <%= 2.year.ago %>
+  
+newest:
+  id: 5
+  name: Name5
+  email: still_email@adress.com
+  subject_id: 2
+  status_id: 1
+  staff_id: 
+  question: I'm newest ticket
+  answer: 
+  refer: aaa-310813
+  id_hashed: 3f66bd1f832a111b52dc98882a6beadf
+  created_at: <%= 1.day.ago %>
+  
+other_staff:
+  id: 6
+  name: Name6
+  email: still_email@adress.com
+  subject_id: 3
+  status_id: 3
+  staff_id: 2
+  question: I'm other staff's ticket
+  answer: Waiting for customer
+  refer: aaa-010312
+  id_hashed: 2f6f3e51b8eebbdb789fb438c3917fcb
+  created_at: <%= 18.month.ago %>
+
+same_staff:
+  id: 7
+  name: Name7
+  email: still_email@adress.com
+  subject_id: 2
+  status_id: 4
+  staff_id: 1
+  question: I'm staff 1 ticket too
+  answer: On hold
+  refer: aaa-010512
+  id_hashed: 5c9826ee69d029f70f20d44baa26ff99
+  created_at: <%= 16.month.ago %>

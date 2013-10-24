@@ -1,0 +1,11 @@
+%p
+  Inform you, that your ticket #
+  %b= @ticket.refer
+  was updated.   
+%h3 Your ticket:
+%p Subject: #{@ticket.subject.description}.
+%p Status: #{@ticket.status.description}.
+%p Question: #{@ticket.question}. 
+- if @ticket.staff 
+  %p  Staff: #{@ticket.staff.username}. 
+%p Answer: #{@ticket.answer}.

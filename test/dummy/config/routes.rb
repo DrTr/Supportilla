@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
 
-  mount Supportilla::Engine => "/supportilla"
+  resources :posts
+  root to: "posts#new"
+
+  mount Supportilla::Engine => "/supportilla", as: "supportilla"
 end

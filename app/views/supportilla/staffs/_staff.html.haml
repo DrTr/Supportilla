@@ -1,0 +1,5 @@
+.staff
+  = staff.username
+  - unless staff.admin
+    = link_to "delete", staff_path(staff), remote: true, method: :delete,
+      data: { confirm: "Delete \"#{staff.username}\"?"}

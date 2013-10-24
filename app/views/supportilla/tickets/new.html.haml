@@ -1,20 +1,16 @@
 %h2 Describe your query.
-.well
-  = form_for(@ticket) do |f|
-    = f.label :name, "Name:"
-    = f.text_field :name, required: true
-    
-    = f.label :email, "Email adress:"
-    = f.text_field :email, required: true
-    
-    = f.label :subject, "Ticket's subject:"
-    = f.select :subject, options_for_select(subject_array)
-    
-    = f.label :question, "Question:"
-    = f.text_area :question, wrap: "soft", required: true, size: "30x5"
-    %br
-    = f.submit "Send", class: "btn btn-success"
-  
-= link_to "About Supportilla", about_path
+= render "supportilla/shared/errors", object: @ticket
+= form_for(@ticket, html: {class: "well"}) do |f|
+  = f.label :name
+  = f.text_field :name, required: true, maxlength: 30
+  = f.label :email, "Email adress"
+  = f.text_field :email, required: true, maxlength: 30 
+  = f.label :subject_id, "Ticket's subject"
+  = f.collection_select(:subject_id, 
+    Supportilla::Subject.where(activity: true), :id, :description)
+  = f.label :question
+  = f.text_area :question, wrap: "soft", required: true, size: "30x5"
+  = f.submit "Send", class: "btn", data: { confirm: "Create ticket?"}
+= link_to "About Supportilla", "https://github.com/DrTr/Supportilla"
 %br
 = link_to "Staff sign in", signin_path
