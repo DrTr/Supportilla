@@ -9,6 +9,7 @@ module Supportilla
       @closed1 = supportilla_tickets(:oldest)  
       @other_staff_ticket = supportilla_tickets(:other_staff)   
       @staff = supportilla_staffs(:staff)
+      @on_hold = supportilla_tickets(:same_staff)
       @routes = Supportilla::Engine.routes
     end
     
@@ -100,12 +101,20 @@ module Supportilla
       assert_equal assigns(:tickets), [@unassigned1, @unassigned2]
     end
     
-    test "should get index with some status" do
+    test "should get index with closed status" do
       get :index, { status: "Closed" }, { staff_id: 1 }
       assert_response :success
       assert_template :index
       assert_equal assigns(:description), "Closed tickets"
       assert_equal assigns(:tickets), [@closed1, @closed2]
+    end
+    
+    test "should get index with on hold status" do
+      get :index, { status: "On hold" }, { staff_id: 1 }
+      assert_response :success
+      assert_template :index
+      assert_equal assigns(:description), "On hold tickets"
+      assert_equal assigns(:tickets), [@on_hold, @ticket]
     end
     
     test "should get search" do
@@ -129,7 +138,7 @@ module Supportilla
       assert_response :success
       assert_template :edit
       assert_equal assigns(:ticket), @ticket
-      assert_equal assigns(:prev_ticket), supportilla_tickets(:same_staff)
+      assert_equal assigns(:prev_ticket), @on_hold
       assert_nil assigns(:next_ticket)
     end
     

@@ -65,14 +65,17 @@ module Supportilla
     end  
     
     test "should get destroy" do
-      assert_difference("Staff.count", -1) do
-        get :destroy, { id: 1 }, { staff_id: 2 }
+      assert_no_difference("Ticket.count") do
+        assert_difference("Staff.count", -1) do
+          get :destroy, { id: 1 }, { staff_id: 2 }
+        end
       end
       assert_response :success
       assert_template :index
       assert !Staff.find_by_id(1)
       assert_equal assigns(:count), 1
       assert_equal assigns(:staffs), [supportilla_staffs(:admin)]
+      assert_equal supportilla_tickets(:same_staff).status.identify, "open"
       assert_not_nil flash[:notice]
     end
   end

@@ -11,6 +11,7 @@
   = f.label :question
   = f.text_area :question, wrap: "soft", required: true, size: "30x5"
   = f.submit "Send", class: "btn", data: { confirm: "Create ticket?"}
-= link_to "About Supportilla", "https://github.com/DrTr/Supportilla"
+= link_to "About Supportilla", "https://github.com/DrTr/Supportilla",
+  target: "_tab"
 %br
 = link_to "Staff sign in", signin_path

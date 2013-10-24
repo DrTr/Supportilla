@@ -23,7 +23,10 @@ module Supportilla
     end
   
     def destroy
-      if Staff.find(params[:id]).destroy
+      staff = Staff.find(params[:id]).destroy
+      staff.tickets.where(status_id: Status.where(role: "On hold")).update_all(
+        status_id: Status.find_by_identify("open"))
+      if staff.destroy
         flash.now[:notice] = "Staff successfully deleted."
       else
         flash.now[:error] = "Failed to delete staff,"

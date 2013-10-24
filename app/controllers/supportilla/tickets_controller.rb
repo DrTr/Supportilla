@@ -92,18 +92,17 @@ module Supportilla
     
     def check_owner
       ticket = Ticket.find_by_id_hashed(params[:id])
-      if ticket.staff && ticket.staff != current_staff
+      if ticket.status.role == "On hold" && ticket.staff != current_staff
         render text: "403 Forbidden", status: :forbidden
       end
     end
     
     def select_collection
       @description = params[:status]
-      if params[:status] == "New unassigned" or params[:status] == "Open"
-        Ticket.where(status_id: Status.where(role: params[:status]))
+      if params[:status] == "On hold"
+        current_staff.tickets.where(status_id: Status.where(role: "On hold"))
       else
-        current_staff.tickets.where(
-          status_id: Status.where(role: params[:status]))
+        Ticket.where(status_id: Status.where(role: params[:status]))
       end
     end
     
